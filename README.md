@@ -58,13 +58,12 @@ Environment Variables - Secure API key management
 📦 Installation & Setup
 Prerequisites
 Python 3.8+
+Google Gemini API key
+OpenWeather API key
+
 
 Screenshot:-
 <img width="1828" height="825" alt="image" src="https://github.com/user-attachments/assets/94e4b34a-157b-4c8f-bbe1-168eeb515d9f" />
 
 Website Link:-https://smart-travel-planner-iota.vercel.app/
 
-
-Google Gemini API key
-
-OpenWeather API key
