@@ -1,0 +1,776 @@
+/* =====================================================================
+   SMART TRAVEL PLANNER: SUPER-SLEEK GLASSMORPHISM REDESIGN
+   ===================================================================== */
+
+/* 1. Global & Body Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Smoother font rendering for modern OS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Using a modern, sleek font. Ensure "Poppins" is linked in your HTML! */
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Deeper, more vibrant gradient with a subtle texture feel */
+  background: linear-gradient(135deg, #434191 0%, #a44fa2 100%);
+  background-size: 400% 400%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px; /* Increased padding */
+  color: #f0f8ff; /* Soft white color */
+  overflow-x: hidden;
+  /* Subtle animation for the background/body itself for depth */
+  animation: backgroundShift 60s ease infinite alternate;
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Enhanced Container (The Glassmorphic Card) */
+.container {
+  width: 100%;
+  max-width: 950px; /* Slightly wider */
+  background: rgba(255, 255, 255, 0.08); /* More subtle background */
+  padding: 3rem; /* Increased padding */
+  border-radius: 30px; /* Softer rounded corners */
+  backdrop-filter: blur(25px) saturate(180%); /* Stronger blur and saturation */
+  /* Stronger shadow, subtle inner border for premium glass effect */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease-out;
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* 2. Titles and Typography */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  /* Premium, crystalline text effect */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 3rem; /* Increased margin for better separation */
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+/* Clickable Title Styles */
+.clickable-title {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    margin: 0 auto 0.8rem auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clickable-title:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.clickable-title:active {
+    transform: scale(0.98);
+}
+
+/* 3. Form & Input Refinements */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-row {
+  /* More flexible row layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 14px 20px; /* Larger padding */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle light border */
+  border-radius: 15px; /* Softer rounded corners */
+  font-size: 1.05rem;
+  background: rgba(255, 255, 255, 0.95); /* Near-white background for excellent contrast */
+  color: #2c3e50; /* Darker text color */
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+input:focus, select:focus {
+  background: white;
+  /* Primary color glow effect */
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.5); 
+  border-color: #667eea;
+}
+
+.input-label {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: block;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+select {
+  cursor: pointer;
+}
+
+/* 4. Buttons and Interactions */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  /* New, punchier, warmer gradient */
+  background: linear-gradient(90deg, #ff6b6b 0%, #ee5253 100%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Stronger initial shadow for an elevated feel */
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px); /* Larger lift */
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* 5. Loading Spinner */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  margin-top: 2rem;
+  display: none;
+}
+
+.loading:not(.hidden) {
+  display: block;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 6. Results Cards & Layout */
+.weather-card, .seasonal-card, .map-card, .culture-card, .itinerary-card, .error-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.weather-card h2, .seasonal-card h2, .map-card h2, .culture-card h2, .itinerary-card h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  border-bottom: 3px solid #ff6b6b; /* Accent color under the heading */
+  padding-bottom: 0.6rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Weather Grid */
+#weatherData {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.weather-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1.2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.weather-item:hover {
+  transform: scale(1.05); /* Interactive hover on weather details */
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.weather-date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.weather-temp {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd700; /* Gold color for temp */
+  margin: 0.3rem 0;
+}
+
+.weather-condition {
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  opacity: 0.9;
+}
+
+#seasonalData, #itineraryData {
+  line-height: 1.7;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar Refinement */
+#seasonalData::-webkit-scrollbar,
+#itineraryData::-webkit-scrollbar {
+  width: 8px;
+}
+
+#seasonalData::-webkit-scrollbar-track,
+#itineraryData::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+#seasonalData::-webkit-scrollbar-thumb,
+#itineraryData::-webkit-scrollbar-thumb {
+  background: #ff6b6b; /* Scrollbar thumb with primary button color */
+  border-radius: 10px;
+}
+
+/* 7. Map Styles - CRITICAL FIXES */
+.map-card {
+  padding: 2.5rem;
+}
+
+.map-card h2 {
+  font-size: 1.8rem;
+}
+
+.map-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.map-btn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 140px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  border: none;
+}
+
+.map-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.map-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Map Container - CRITICAL FIXES */
+#mapContainer {
+  position: relative;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#map {
+  height: 500px !important;
+  width: 100% !important;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #f8f9fa !important;
+  z-index: 1;
+}
+
+/* LEAFLET SPECIFIC FIXES - CRITICAL */
+.leaflet-container {
+  background: #f8f9fa !important;
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  border-radius: 15px !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.leaflet-control-container {
+  z-index: 1000;
+}
+
+.leaflet-popup-content {
+  font-family: "Poppins", sans-serif !important;
+  margin: 8px 12px !important;
+  color: #2c3e50 !important;
+  line-height: 1.6 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Map legend styling */
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.legend-icon.attraction { color: #ff6b6b; }
+.legend-icon.restaurant { color: #ffd700; }
+.legend-icon.hotel { color: #667eea; }
+
+/* Marker popup styling */
+.map-popup h3 {
+  color: #434191;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ff6b6b;
+  padding-bottom: 0.3rem;
+}
+
+.map-popup p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.popup-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.rating { color: #f39c12; font-weight: bold; }
+.price { color: #27ae60; font-weight: bold; }
+.distance { color: #667eea; font-weight: bold; }
+
+/* Map loading state */
+.map-loading {
+  height: 250px;
+  font-size: 1.2rem;
+}
+
+/* Section divider */
+.map-card::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ee5253); 
+  margin: 0 auto 1.5rem auto;
+  border-radius: 2px;
+}
+
+/* 8. Culture & Language Styles */
+.culture-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.culture-tab {
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  border: none;
+}
+
+.culture-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.culture-tab.active {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+}
+
+.culture-content {
+  min-height: 220px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Language Content Readability */
+.language-phrase {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #ffd700;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+}
+
+.phrase-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.phrase-english, .tip-title {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.phrase-local {
+  font-style: normal;
+  color: #f0f8ff;
+  font-weight: 300;
+}
+
+.phrase-pronunciation {
+  opacity: 0.9;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.etiquette-tip, .food-tip, .general-tip {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+}
+
+.tip-title {
+  margin-bottom: 0.3rem;
+}
+
+/* 9. Utility & Responsive Design */
+.hidden {
+  display: none !important;
+}
+
+#result {
+  display: none;
+}
+
+.error-card {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(231, 76, 60, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  h1, .clickable-title {
+    font-size: 1.8rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  #weatherData {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .map-controls, .culture-tabs {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .map-btn, .culture-tab {
+    width: 100%;
+    min-width: auto;
+    justify-content: center;
+  }
+  
+  .phrase-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .btn-secondary {
+    width: 100%;
+  }
+  
+  #map {
+    height: 350px !important;
+  }
+  
+  .map-legend {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .legend-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .popup-details {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-card {
+    padding: 1rem;
+  }
+  
+  #map {
+    height: 300px !important;
+  }
+  
+  .weather-item {
+    padding: 1rem;
+  }
+  
+  .weather-temp {
+    font-size: 1.6rem;
+  }
+
+  .map-legend {
+    padding: 0.8rem;
+  }
+
+  .legend-item {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Print Styles - FIXED */
+@media print {
+  * {
+    color: black !important;
+    background: white !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.4;
+    padding: 20px !important;
+    display: block !important;
+    animation: none !important;
+  }
+
+  .container {
+    box-shadow: none !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    border: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Hide interactive elements */
+  form, .action-buttons, .loading, .map-controls, .culture-tabs, 
+  .map-legend, .btn-primary, .btn-secondary, .clickable-title,
+  .subtitle, .map-description {
+    display: none !important;
+  }
+
+  /* Show all content cards with proper print styling */
+  .weather-card, .seasonal-card, .map-card, .culture-card, .itinerary-card {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
+    margin: 25px 0 !important;
+    padding: 20px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* CRITICAL: Remove all height restrictions for print */
+  #itineraryData, #seasonalData, .culture-content {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    padding-right: 0 !important;
+  }
+
+  /* Show ALL tab content */
+  .tab-content {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Ensure map is visible in print */
+  #map {
+    height: 300px !important;
+    page-break-inside: avoid;
+    background: #f8f9fa !important;
+  }
+
+  /* Print header */
+  .container::before {
+    content: "Smart Travel Planner - Complete Itinerary";
+    display: block;
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #000;
+    padding-bottom: 15px;
+    color: black !important;
+  }
+}

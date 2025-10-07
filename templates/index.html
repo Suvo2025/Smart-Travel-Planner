@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Travel Planner ✈️</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="clickable-title" onclick="location.reload()">🌍 Smart Travel Planner ✈️</h1>
+    <p class="subtitle">Plan your perfect trip</p>
+    
+    <!-- Travel Planning Form -->
+    <form id="travelForm">
+      <div class="form-group">
+        <input type="text" id="destinationInput" placeholder="Enter destination (e.g., Paris, Tokyo)" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <input type="date" id="startDate" required>
+          <label class="input-label">Start Date</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="date" id="endDate" required>
+          <label class="input-label">End Date</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input type="number" id="daysInput" min="1" max="30" value="3" placeholder="Days" readonly>
+          <label class="input-label">Duration (auto-calculated)</label>
+        </div>
+        
+        <div class="form-group">
+          <select id="preferencesInput">
+            <option value="sightseeing, culture, food">🏛️ Culture & Sightseeing</option>
+            <option value="adventure, hiking, outdoor">🏔️ Adventure & Outdoor</option>
+            <option value="beach, relaxation, resort">🏖️ Beach & Relaxation</option>
+            <option value="food, restaurants, local cuisine">🍽️ Food & Cuisine</option>
+            <option value="shopping, nightlife, entertainment">🛍️ Shopping & Nightlife</option>
+            <option value="family, kids, activities">👨‍👩‍👧‍👦 Family Friendly</option>
+          </select>
+          <label class="input-label">Travel Style</label>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn-primary">
+        <span class="btn-icon">🗺️</span> Generate Travel Plan
+      </button>
+    </form>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Creating your personalized itinerary...</p>
+    </div>
+
+    <!-- Results Section -->
+    <div id="result" style="display: none;">
+      <!-- Weather Summary -->
+      <div class="weather-card">
+        <h2>🌤️ Weather Forecast</h2>
+        <div id="weatherData"></div>
+      </div>
+
+      <!-- Seasonal Highlights -->
+      <div class="seasonal-card">
+        <h2>🍂 Seasonal Highlights</h2>
+        <div id="seasonalData"></div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="map-card">
+        <h2>🗺️ Interactive Map</h2>
+        <div class="map-controls">
+          <button id="showAttractions" class="map-btn active">📍 Attractions</button>
+          <button id="showRestaurants" class="map-btn">🍽️ Restaurants</button>
+          <button id="showHotels" class="map-btn">🏨 Hotels</button>
+          <button id="showAll" class="map-btn">🌟 All Points</button>
+        </div>
+        <div id="mapContainer">
+          <div id="map"></div>
+          <div class="map-legend">
+            <div class="legend-item"><span class="legend-icon attraction">📍</span> Attractions</div>
+            <div class="legend-item"><span class="legend-icon restaurant">🍽️</span> Restaurants</div>
+            <div class="legend-item"><span class="legend-icon hotel">🏨</span> Hotels</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language & Culture Tips -->
+      <div class="culture-card">
+        <h2>🗣️ Language & Culture Guide</h2>
+        <div class="culture-tabs">
+          <button class="culture-tab active" data-tab="phrases">Basic Phrases</button>
+          <button class="culture-tab" data-tab="etiquette">Cultural Etiquette</button>
+          <button class="culture-tab" data-tab="food">Food Culture</button>
+          <button class="culture-tab" data-tab="tips">Practical Tips</button>
+        </div>
+        <div class="culture-content">
+          <div id="phrasesContent" class="tab-content active">
+            <div id="languageData"></div>
+          </div>
+          <div id="etiquetteContent" class="tab-content">
+            <div id="etiquetteData"></div>
+          </div>
+          <div id="foodContent" class="tab-content">
+            <div id="foodData"></div>
+          </div>
+          <div id="tipsContent" class="tab-content">
+            <div id="tipsData"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Itinerary -->
+      <div class="itinerary-card">
+        <h2>📋 Your Travel Itinerary</h2>
+        <div id="itineraryData"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button onclick="window.print()" class="btn-secondary">
+          📄 Print Itinerary
+        </button>
+        <button onclick="location.reload()" class="btn-secondary">
+          🔄 Plan Another Trip
+        </button>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-card hidden">
+      <h3>⚠️ Oops!</h3>
+      <p id="errorText"></p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/script.js"></script>
+  <script src="/static/map.js"></script>
+</body>
+</html>
